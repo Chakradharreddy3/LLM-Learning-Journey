@@ -5,7 +5,7 @@ This repository contains my journey of learning and building Large Language Mode
 ## 📚 Learning Roadmap
 
 - ✅ 01 - Study Assistant
-- ⏳ 02 - Text Translator
+- ✅ 02 - Language-Translator-Assistant
 - ⏳ 03 - Text Summarizer
 - ⏳ 04 - Prompt Engineering
 - ⏳ 05 - RAG Applications
