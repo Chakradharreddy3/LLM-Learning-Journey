@@ -1,24 +1,49 @@
+
 import os
-from dotenv import load_dotenv
 from google import genai
+from dotenv import load_dotenv
+from google.genai import types
+import gradio as gr 
+
 
 load_dotenv()
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
-GEMINI_API_KEY=os.getenv("GEMINI_API_KEY")
-client=genai.Client(api_key=GEMINI_API_KEY)
+client = genai.Client(api_key=GEMINI_API_KEY)
 
-def Language_translator(text,source_language,translated_language):
-    prompt=f"Translate the following sentence from {source_language} to {translated_language}\n\n{text}"
-    
-    response=client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=prompt
-    )
-    return response.text
-    
+languages={
+    "Hindi":"Translate the following sentence into Hindi",
+    "Telugu":"Translate the following sentence into Telugu",
+    "French":"Translate the following sentence into French"
+    }
 
-# topic="Hi How are you"
-# user_promt=f"change the sentence {topic} to telugu"
-print(Language_translator("Hi, How are You","English","Telugu"))
-print(Language_translator("Hi, How are You","English","french"))
-print(Language_translator("player scored century","English","Hindi"))
+def translate_text(question,language):
+    system_prompt=languages[language]
+    try:
+        response = client.models.generate_content(
+            model="gemini-3.5-flash",
+            config=types.GenerateContentConfig(
+                system_instruction=system_prompt
+            ),
+            contents=question
+        )
+        return response.text
+
+    except Exception:
+        return (
+            "Gemini is currently unavailable or busy. "
+            "Please try again after a few moments."
+        )
+
+demo=gr.Interface(
+    fn=translate_text,
+    inputs=[gr.Textbox(lines=4,placeholder="Enter text to translate",label="Input Text"),
+            gr.Dropdown(list(languages.keys()),label="Target Language",value="Telugu")
+            ],
+    outputs=gr.Textbox(lines=6,label="Translated Text"),
+    title="Language Translator Assistant",
+    description="Translate text into different languages using Google's Gemini AI."
+
+)
+
+demo.launch(debug=True)

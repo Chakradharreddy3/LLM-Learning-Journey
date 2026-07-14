@@ -1,48 +1,37 @@
 # 🌐 Language Translator Assistant
 
-A simple LLM application that translates text between different languages using Google's Gemini API.
+A web-based language translator built using Google's Gemini API and Gradio.
 
 ## Features
 
-- Translate English to Telugu
-- Translate English to French
-- Translate English to Hindi
-- Easily extend to support other languages
+- 🌍 Translate text into Telugu
+- 🌍 Translate text into Hindi
+- 🌍 Translate text into French
+- 🤖 Powered by Gemini AI
+- 🎨 Interactive Gradio UI
 
 ## Technologies Used
 
 - Python
 - Google Gemini API
+- Gradio
 - python-dotenv
 
-## Project Structure
+## Application Preview
 
-```
-02-Language-Translator-Assistant/
-│── app.py
-│── requirements.txt
-│── .env.example
-│── README.md
-```
+![Language Translator UI](screenshots/home.png)
 
-## Run
+## Installation
 
 ```bash
 pip install -r requirements.txt
 python app.py
 ```
 
-## Example
+## Environment Variable
 
-Input:
+Create a `.env` file:
 
-```
-Hi, How are You
-English → Telugu
-```
-
-Output:
-
-```
-హాయ్, మీరు ఎలా ఉన్నారు?
+```text
+GEMINI_API_KEY=your_api_key_here
 ```
