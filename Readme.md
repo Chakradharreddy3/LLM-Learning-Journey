@@ -5,8 +5,8 @@ This repository contains my journey of learning and building Large Language Mode
 ## 📚 Learning Roadmap
 
 - ✅ 01 - Study Assistant
-- ✅ 02 - Language-Translator-Assistant
-- ⏳ 03 - Text Summarizer
+- ✅ 02 - Language Translator Assistant
+- ⏳ 03 - Question Generator Assistant
 - ⏳ 04 - Prompt Engineering
 - ⏳ 05 - RAG Applications
 - ⏳ 06 - AI Agents
@@ -16,6 +16,7 @@ This repository contains my journey of learning and building Large Language Mode
 
 - Python
 - Google Gemini API
+- Gradio
 - LangChain (Upcoming)
 - RAG (Upcoming)
 - AI Agents (Upcoming)
